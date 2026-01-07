@@ -38,6 +38,7 @@ resource "aws_subnet" "public" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-public-subnet-${count.index}"
   })
+  map_public_ip_on_launch = false
 }
 
 resource "aws_route_table" "public" {
@@ -65,6 +66,7 @@ resource "aws_subnet" "private" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-private-subnet-${count.index}"
   })
+  map_public_ip_on_launch = false
 }
 
 resource "aws_route_table" "private" {
