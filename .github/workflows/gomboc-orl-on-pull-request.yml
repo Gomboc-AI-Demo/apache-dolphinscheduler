@@ -25,7 +25,7 @@ on:
     types: [opened, synchronize, reopened]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
   packages: read
 
@@ -40,6 +40,6 @@ jobs:
 
       - uses: Gomboc-AI/actions/on-pull-request-runner@dev-4567
         with:
-          mode: audit
+          mode: remediate
         env:
           GOMBOC_ACCESS_TOKEN: ${{ secrets.GOMBOC_ACCESS_TOKEN }}
