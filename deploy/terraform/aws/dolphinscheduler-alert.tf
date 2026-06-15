@@ -102,4 +102,5 @@ resource "aws_instance" "alert" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-alert-${count.index}"
   })
+  iam_instance_profile = "PLACEHOLDER_IAM_INSTANCE_PROFILE"
 }
