@@ -54,4 +54,7 @@ resource "aws_db_instance" "database" {
   deletion_protection = true
   multi_az = true
   copy_tags_to_snapshot = true
+  lifecycle {
+    ignore_changes = [engine_version]
+  }
 }
