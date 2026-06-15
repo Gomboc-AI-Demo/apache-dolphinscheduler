@@ -53,4 +53,5 @@ resource "aws_db_instance" "database" {
   password               = var.db_password
   deletion_protection = true
   multi_az = true
+  copy_tags_to_snapshot = true
 }
