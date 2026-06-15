@@ -38,7 +38,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - uses: Gomboc-AI/actions/on-pull-request-runner@dev-4567
+      - uses: Gomboc-AI/actions/on-pull-request-runner@dev-4604
         with:
           mode: remediate
         env:
