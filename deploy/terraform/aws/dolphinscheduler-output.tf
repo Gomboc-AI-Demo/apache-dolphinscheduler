@@ -15,6 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
+
 output "vm_server_instance_id" {
   value = [for vm in aws_instance.standalone_server : vm.id]
   description = "Instance IDs of standalone instances"
