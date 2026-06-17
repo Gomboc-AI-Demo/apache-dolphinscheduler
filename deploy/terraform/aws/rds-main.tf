@@ -52,4 +52,5 @@ resource "aws_db_instance" "database" {
   username               = var.db_username
   password               = var.db_password
   deletion_protection = true
+  multi_az = true
 }
