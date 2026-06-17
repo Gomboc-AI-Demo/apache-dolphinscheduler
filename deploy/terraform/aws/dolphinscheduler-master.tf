@@ -111,4 +111,5 @@ resource "aws_instance" "master" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-master-${count.index}"
   })
+  iam_instance_profile = "PLACEHOLDER_IAM_INSTANCE_PROFILE"
 }
