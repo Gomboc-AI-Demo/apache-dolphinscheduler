@@ -73,7 +73,7 @@ resource "aws_instance" "api" {
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.api.id]
   source_dest_check           = false
-  associate_public_ip_address = var.vm_associate_public_ip_address.api
+  associate_public_ip_address = false
 
   user_data = data.template_file.api_user_data.rendered
 
@@ -101,4 +101,9 @@ resource "aws_instance" "api" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-api-${count.index}"
   })
+  iam_instance_profile = "PLACEHOLDER_IAM_INSTANCE_PROFILE"
+  disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
