@@ -22,10 +22,27 @@ resource "aws_vpc" "_" {
     "Name" = "${var.name_prefix}-vpc"
   })
 }
+resource "aws_flow_log" "USER_INPUT_1" {
+  vpc_id          = aws_vpc.USER_INPUT_2.id
+  traffic_type    = "REJECT"
+  iam_role_arn    = "USER_INPUT_3"
+  log_destination = "USER_INPUT_4"
+}
+resource "aws_vpc_endpoint" "ecr_api" {
+  vpc_id            = aws_vpc._.id
+  service_name      = "com.amazonaws.us-east-1.ssm"
+  vpc_endpoint_type = "Interface"
+}
+resource "aws_flow_log" "_" {
+  vpc_id          = aws_vpc._.id
+  traffic_type    = "ALL"
+  iam_role_arn    = aws_iam_role.flow_log.arn
+  log_destination = aws_cloudwatch_log_group.flow_log.arn
+}
 
 
 resource "aws_internet_gateway" "_" {
-  vpc_id = aws_vpc._.id
+  vpc_id = "PLACEHOLDER_AUTHORIZED_VPC_ID"
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-ig"
   })
@@ -44,7 +61,7 @@ resource "aws_subnet" "public" {
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc._.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "PLACEHOLDER_SPECIFIC_CIDR_BLOCK"
     gateway_id = aws_internet_gateway._.id
   }
   tags = merge(var.tags, {
@@ -71,7 +88,7 @@ resource "aws_subnet" "private" {
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc._.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "PLACEHOLDER_SPECIFIC_CIDR_BLOCK"
     gateway_id = aws_internet_gateway._.id
   }
   tags = merge(var.tags, {
