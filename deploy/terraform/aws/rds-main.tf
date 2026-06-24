@@ -61,4 +61,5 @@ resource "aws_db_instance" "database" {
   lifecycle {
     ignore_changes = [engine_version]
   }
+  monitoring_role_arn = "REPLACE_ME"
 }
