@@ -25,7 +25,7 @@ resource "aws_vpc" "_" {
 
 
 resource "aws_internet_gateway" "_" {
-  vpc_id = aws_vpc._.id
+  vpc_id = "PLACEHOLDER_AUTHORIZED_VPC_ID"
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-ig"
   })
