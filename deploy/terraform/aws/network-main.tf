@@ -24,7 +24,7 @@ resource "aws_vpc" "_" {
 }
 resource "aws_vpc_endpoint" "ecr_api" {
   vpc_id            = aws_vpc._.id
-  service_name      = "com.amazonaws.us-east-1.ecr.api"
+  service_name      = "com.amazonaws.us-east-1.ssm-contacts"
   vpc_endpoint_type = "Interface"
 }
 resource "aws_flow_log" "_" {
