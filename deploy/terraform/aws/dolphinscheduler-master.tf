@@ -115,4 +115,5 @@ resource "aws_instance" "master" {
   metadata_options {
     http_tokens = "required"
   }
+  monitoring = true
 }
