@@ -23,6 +23,7 @@ resource "aws_vpc" "_" {
   })
 }
 
+
 resource "aws_internet_gateway" "_" {
   vpc_id = aws_vpc._.id
   tags = merge(var.tags, {
