@@ -19,6 +19,7 @@ output "vm_server_instance_id" {
   value = [for vm in aws_instance.standalone_server : vm.id]
   description = "Instance IDs of standalone instances"
 }
+
 output "vm_server_instance_private_ip" {
   value = [for vm in aws_instance.standalone_server : vm.private_ip]
   description = "Private IPs of standalone instances"
