@@ -26,12 +26,12 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - uses: gomboc-ai/actions/on-pull-request-runner@dev-4634
+      - uses: gomboc-ai/actions/on-pull-request-runner@dev-4614
         with:
           mode: remediate
-          # rules-service-url: https://rules.dev.gcp.gomboc.ai
-          # integrations-service-url: https://integrations.dev.gcp.gomboc.ai
-          # portal-service-url: https://app.dev.gcp.gomboc.ai
+          rules-service-url: https://rules.dev.gcp.gomboc.ai
+          integrations-service-url: https://integrations.dev.gcp.gomboc.ai
+          portal-service-url: https://app.dev.gcp.gomboc.ai
         env:
-          # GOMBOC_ACCESS_TOKEN: ${{ secrets.GOMBOC_ACCESS_TOKEN_DEV }}
-          GOMBOC_ACCESS_TOKEN: ${{ secrets.GOMBOC_ACCESS_TOKEN }}
+          GOMBOC_ACCESS_TOKEN: ${{ secrets.GOMBOC_ACCESS_TOKEN_DEV }}
+          # GOMBOC_ACCESS_TOKEN: ${{ secrets.GOMBOC_ACCESS_TOKEN }}
