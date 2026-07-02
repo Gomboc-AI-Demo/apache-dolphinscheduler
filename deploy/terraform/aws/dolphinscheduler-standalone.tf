@@ -15,6 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
+
 resource "aws_security_group" "standalone" {
   name        = "standalone"
   description = "Allow incoming connections"
