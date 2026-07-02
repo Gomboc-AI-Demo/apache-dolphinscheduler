@@ -67,7 +67,7 @@ resource "aws_instance" "zookeeper" {
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.zookeeper_sg[count.index].id]
   source_dest_check           = false
-  associate_public_ip_address = var.vm_associate_public_ip_address.standalone_server
+  associate_public_ip_address = false
   key_name                    = aws_key_pair.key_pair.key_name
 
   user_data = data.template_file.zookeeper_user_data.rendered
@@ -111,4 +111,8 @@ resource "aws_instance" "zookeeper" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-zookeeper-${count.index}"
   })
+  disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
