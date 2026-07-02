@@ -74,7 +74,7 @@ resource "aws_instance" "standalone_server" {
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.standalone.id]
   source_dest_check           = false
-  associate_public_ip_address = var.vm_associate_public_ip_address.standalone_server
+  associate_public_ip_address = false
 
   user_data = data.template_file.standalone_user_data.rendered
 
@@ -102,4 +102,8 @@ resource "aws_instance" "standalone_server" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-standalone-${count.index}"
   })
+  disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
