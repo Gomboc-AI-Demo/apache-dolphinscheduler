@@ -26,6 +26,7 @@ resource "aws_security_group" "api" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow incoming HTTP connections"
   }
+
   ingress {
     from_port   = 22
     to_port     = 22
