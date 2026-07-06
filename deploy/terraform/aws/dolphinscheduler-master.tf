@@ -26,6 +26,7 @@ resource "aws_security_group" "master" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow incoming SSH connections (Linux)"
   }
+
   ingress {
     from_port       = 5678
     to_port         = 5678
