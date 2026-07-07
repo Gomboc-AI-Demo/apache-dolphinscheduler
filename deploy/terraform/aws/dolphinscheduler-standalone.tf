@@ -44,6 +44,7 @@ resource "aws_security_group" "standalone" {
   })
 }
 
+
 data "template_file" "standalone_user_data" {
   template = file("templates/cloud-init.yaml")
   vars = {
