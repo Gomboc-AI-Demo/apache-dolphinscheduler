@@ -102,4 +102,5 @@ resource "aws_instance" "standalone_server" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-standalone-${count.index}"
   })
+  disable_api_termination = true
 }
