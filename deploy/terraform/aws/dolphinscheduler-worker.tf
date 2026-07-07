@@ -45,6 +45,7 @@ resource "aws_security_group" "worker" {
   })
 }
 
+
 data "template_file" "worker_user_data" {
   template = file("templates/cloud-init.yaml")
   vars = {
