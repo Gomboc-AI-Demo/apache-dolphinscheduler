@@ -75,7 +75,7 @@ resource "aws_instance" "worker" {
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.worker.id]
   source_dest_check           = false
-  associate_public_ip_address = var.vm_associate_public_ip_address.worker
+  associate_public_ip_address = false
 
   user_data = data.template_file.worker_user_data.rendered
 
@@ -103,4 +103,8 @@ resource "aws_instance" "worker" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-worker-${count.index}"
   })
+  disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
