@@ -112,4 +112,7 @@ resource "aws_instance" "zookeeper" {
     "Name" = "${var.name_prefix}-zookeeper-${count.index}"
   })
   disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
