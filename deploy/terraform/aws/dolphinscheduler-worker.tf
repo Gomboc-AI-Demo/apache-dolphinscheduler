@@ -104,4 +104,7 @@ resource "aws_instance" "worker" {
     "Name" = "${var.name_prefix}-worker-${count.index}"
   })
   disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
