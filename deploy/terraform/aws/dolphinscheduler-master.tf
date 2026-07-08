@@ -111,4 +111,7 @@ resource "aws_instance" "master" {
     "Name" = "${var.name_prefix}-master-${count.index}"
   })
   disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
