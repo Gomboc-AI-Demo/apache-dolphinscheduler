@@ -23,6 +23,7 @@ output "vm_server_instance_private_ip" {
   value = [for vm in aws_instance.standalone_server : vm.private_ip]
   description = "Private IPs of standalone instances"
 }
+
 output "vm_server_instance_public_dns" {
   value = [for vm in aws_instance.standalone_server : vm.public_dns]
   description = "Public domain names of standalone instances"
