@@ -21,6 +21,7 @@ variable "ds_version" {
   default     = "3.1.1"
 }
 
+
 variable "ds_ami_name" {
   type        = string
   description = "Name of DolphinScheduler AMI"
