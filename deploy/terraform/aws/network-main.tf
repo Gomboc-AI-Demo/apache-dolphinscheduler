@@ -43,7 +43,7 @@ resource "aws_subnet" "public" {
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc._.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "PLACEHOLDER_SPECIFIC_CIDR_BLOCK"
     gateway_id = aws_internet_gateway._.id
   }
   tags = merge(var.tags, {
@@ -70,7 +70,7 @@ resource "aws_subnet" "private" {
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc._.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "PLACEHOLDER_SPECIFIC_CIDR_BLOCK"
     gateway_id = aws_internet_gateway._.id
   }
   tags = merge(var.tags, {
