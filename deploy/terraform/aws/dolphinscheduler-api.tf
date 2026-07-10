@@ -24,14 +24,14 @@ resource "aws_security_group" "api" {
     from_port   = 12345
     to_port     = 12345
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["USER_INPUT_1"]
     description = "Allow incoming HTTP connections"
   }
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["USER_INPUT_1"]
     description = "Allow incoming SSH connections (Linux)"
   }
   egress {
@@ -74,13 +74,13 @@ resource "aws_instance" "api" {
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.api.id]
   source_dest_check           = false
-  associate_public_ip_address = var.vm_associate_public_ip_address.api
+  associate_public_ip_address = false
 
   user_data = data.template_file.api_user_data.rendered
 
   root_block_device {
-    volume_size           = var.vm_root_volume_size.api
-    volume_type           = var.vm_root_volume_type.api
+    volume_size           = 50
+    volume_type           = "gp3"
     delete_on_termination = true
     encrypted             = true
     tags = merge(var.tags, {
@@ -90,8 +90,8 @@ resource "aws_instance" "api" {
 
   ebs_block_device {
     device_name           = "/dev/xvda"
-    volume_size           = var.vm_data_volume_size.api
-    volume_type           = var.vm_data_volume_type.api
+    volume_size           = 50
+    volume_type           = "gp3"
     encrypted             = true
     delete_on_termination = true
     tags = merge(var.tags, {
@@ -102,4 +102,10 @@ resource "aws_instance" "api" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-api-${count.index}"
   })
+  iam_instance_profile = "PLACEHOLDER_IAM_INSTANCE_PROFILE"
+  disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
+  monitoring = true
 }
