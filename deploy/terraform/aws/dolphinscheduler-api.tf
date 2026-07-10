@@ -104,4 +104,7 @@ resource "aws_instance" "api" {
   })
   iam_instance_profile = "PLACEHOLDER_IAM_INSTANCE_PROFILE"
   disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
