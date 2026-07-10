@@ -80,7 +80,7 @@ resource "aws_instance" "api" {
 
   root_block_device {
     volume_size           = var.vm_root_volume_size.api
-    volume_type           = var.vm_root_volume_type.api
+    volume_type           = "gp3"
     delete_on_termination = true
     encrypted             = true
     tags = merge(var.tags, {
@@ -91,7 +91,7 @@ resource "aws_instance" "api" {
   ebs_block_device {
     device_name           = "/dev/xvda"
     volume_size           = var.vm_data_volume_size.api
-    volume_type           = var.vm_data_volume_type.api
+    volume_type           = "gp3"
     encrypted             = true
     delete_on_termination = true
     tags = merge(var.tags, {

@@ -74,7 +74,7 @@ resource "aws_instance" "zookeeper" {
 
   root_block_device {
     volume_size           = var.vm_root_volume_size.standalone_server
-    volume_type           = var.vm_root_volume_type.standalone_server
+    volume_type           = "gp3"
     delete_on_termination = true
     encrypted             = true
     tags = merge(var.tags, {
@@ -85,7 +85,7 @@ resource "aws_instance" "zookeeper" {
   ebs_block_device {
     device_name           = "/dev/xvda"
     volume_size           = var.vm_data_volume_size.standalone_server
-    volume_type           = var.vm_data_volume_type.standalone_server
+    volume_type           = "gp3"
     encrypted             = true
     delete_on_termination = true
     tags = merge(var.tags, {
