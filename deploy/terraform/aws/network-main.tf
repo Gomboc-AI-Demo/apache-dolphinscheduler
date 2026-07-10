@@ -22,6 +22,12 @@ resource "aws_vpc" "_" {
     "Name" = "${var.name_prefix}-vpc"
   })
 }
+resource "aws_flow_log" "_" {
+  vpc_id          = aws_vpc._.id
+  traffic_type    = "ALL"
+  iam_role_arn    = aws_iam_role.flow_log.arn
+  log_destination = aws_cloudwatch_log_group.flow_log.arn
+}
 
 resource "aws_internet_gateway" "_" {
   vpc_id = "PLACEHOLDER_AUTHORIZED_VPC_ID"
