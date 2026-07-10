@@ -53,4 +53,5 @@ resource "aws_db_instance" "database" {
   password               = var.db_password
   storage_encrypted = true
   backup_retention_period = 7
+  iam_database_authentication_enabled = true
 }
