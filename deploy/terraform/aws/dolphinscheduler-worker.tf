@@ -107,4 +107,5 @@ resource "aws_instance" "worker" {
   metadata_options {
     http_tokens = "required"
   }
+  monitoring = true
 }
