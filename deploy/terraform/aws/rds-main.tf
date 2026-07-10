@@ -54,4 +54,5 @@ resource "aws_db_instance" "database" {
   storage_encrypted = true
   backup_retention_period = 7
   iam_database_authentication_enabled = true
+  deletion_protection = true
 }
