@@ -58,4 +58,7 @@ resource "aws_db_instance" "database" {
   monitoring_interval = 60
   multi_az = true
   copy_tags_to_snapshot = true
+  lifecycle {
+    ignore_changes = [engine_version]
+  }
 }
