@@ -51,4 +51,5 @@ resource "aws_db_instance" "database" {
   vpc_security_group_ids = [aws_security_group.database_sg.id]
   username               = var.db_username
   password               = var.db_password
+  storage_encrypted = true
 }
