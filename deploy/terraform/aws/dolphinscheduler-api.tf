@@ -24,14 +24,14 @@ resource "aws_security_group" "api" {
     from_port   = 12345
     to_port     = 12345
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["USER_INPUT_1"]
     description = "Allow incoming HTTP connections"
   }
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["USER_INPUT_1"]
     description = "Allow incoming SSH connections (Linux)"
   }
   egress {
