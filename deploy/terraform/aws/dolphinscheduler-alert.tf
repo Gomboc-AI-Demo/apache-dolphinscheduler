@@ -74,7 +74,7 @@ resource "aws_instance" "alert" {
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.alert.id]
   source_dest_check           = false
-  associate_public_ip_address = var.vm_associate_public_ip_address.alert
+  associate_public_ip_address = false
 
   user_data = data.template_file.alert_user_data.rendered
 
@@ -102,4 +102,8 @@ resource "aws_instance" "alert" {
   tags = merge(var.tags, {
     "Name" = "${var.name_prefix}-alert-${count.index}"
   })
+  disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
