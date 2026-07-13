@@ -44,6 +44,7 @@ resource "aws_security_group" "alert" {
   })
 }
 
+
 data "template_file" "alert_user_data" {
   template = file("templates/cloud-init.yaml")
   vars = {
