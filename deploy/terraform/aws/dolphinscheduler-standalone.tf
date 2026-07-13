@@ -102,4 +102,7 @@ resource "aws_instance" "standalone_server" {
     "Name" = "${var.name_prefix}-standalone-${count.index}"
   })
   disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }

@@ -102,4 +102,7 @@ resource "aws_instance" "api" {
     "Name" = "${var.name_prefix}-api-${count.index}"
   })
   disable_api_termination = true
+  metadata_options {
+    http_tokens = "required"
+  }
 }
