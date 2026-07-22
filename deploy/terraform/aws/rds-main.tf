@@ -59,4 +59,5 @@ resource "aws_db_instance" "database" {
   iam_database_authentication_enabled = true
   deletion_protection = true
   monitoring_interval = 60
+  multi_az = true
 }
