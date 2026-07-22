@@ -28,7 +28,7 @@ jobs:
 
       - uses: gomboc-ai/actions/on-pull-request-runner@DEV-4657
         with:
-          mode: remediate
+          mode: audit
           rules-service-url: https://rules.dev.gcp.gomboc.ai
           integrations-service-url: https://integrations.dev.gcp.gomboc.ai
           portal-service-url: https://app.dev.gcp.gomboc.ai
