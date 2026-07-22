@@ -102,4 +102,7 @@ resource "aws_instance" "standalone_server" {
     "Name" = "${var.name_prefix}-standalone-${count.index}"
   })
   iam_instance_profile = "PLACEHOLDER_IAM_INSTANCE_PROFILE"
+  metadata_options {
+    http_tokens = "required"
+  }
 }
