@@ -78,7 +78,7 @@ resource "aws_instance" "standalone_server" {
   user_data = data.template_file.standalone_user_data.rendered
 
   root_block_device {
-    volume_size           = var.vm_root_volume_size.standalone_server
+    volume_size           = 50
     volume_type           = "gp3"
     delete_on_termination = true
     encrypted             = true
@@ -89,7 +89,7 @@ resource "aws_instance" "standalone_server" {
 
   ebs_block_device {
     device_name           = "/dev/xvda"
-    volume_size           = var.vm_data_volume_size.standalone_server
+    volume_size           = 50
     volume_type           = "gp3"
     encrypted             = true
     delete_on_termination = true
