@@ -65,4 +65,5 @@ resource "aws_db_instance" "database" {
     ignore_changes = [engine_version]
   }
   monitoring_role_arn = "REPLACE_ME"
+  enabled_cloudwatch_logs_exports = ["postgresql", "upgrade", "iam-db-auth-error"]
 }
