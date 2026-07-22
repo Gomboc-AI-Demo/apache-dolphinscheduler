@@ -115,4 +115,5 @@ resource "aws_instance" "master" {
     http_tokens = "required"
   }
   disable_api_termination = true
+  monitoring = true
 }

@@ -116,4 +116,5 @@ resource "aws_instance" "zookeeper" {
     http_tokens = "required"
   }
   disable_api_termination = true
+  monitoring = true
 }

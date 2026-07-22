@@ -106,4 +106,5 @@ resource "aws_instance" "alert" {
     http_tokens = "required"
   }
   disable_api_termination = true
+  monitoring = true
 }

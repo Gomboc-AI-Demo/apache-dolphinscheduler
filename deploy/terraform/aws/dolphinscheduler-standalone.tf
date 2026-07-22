@@ -106,4 +106,5 @@ resource "aws_instance" "standalone_server" {
     http_tokens = "required"
   }
   disable_api_termination = true
+  monitoring = true
 }
