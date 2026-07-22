@@ -106,4 +106,5 @@ resource "aws_instance" "worker" {
   metadata_options {
     http_tokens = "required"
   }
+  disable_api_termination = true
 }

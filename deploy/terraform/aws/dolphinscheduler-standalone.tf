@@ -105,4 +105,5 @@ resource "aws_instance" "standalone_server" {
   metadata_options {
     http_tokens = "required"
   }
+  disable_api_termination = true
 }
