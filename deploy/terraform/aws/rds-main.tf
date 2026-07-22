@@ -60,4 +60,5 @@ resource "aws_db_instance" "database" {
   deletion_protection = true
   monitoring_interval = 60
   multi_az = true
+  copy_tags_to_snapshot = true
 }
