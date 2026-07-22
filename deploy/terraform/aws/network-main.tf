@@ -22,6 +22,12 @@ resource "aws_vpc" "_" {
     "Name" = "${var.name_prefix}-vpc"
   })
 }
+resource "aws_flow_log" "USER_INPUT_1" {
+  vpc_id          = aws_vpc.USER_INPUT_2.id
+  traffic_type    = "REJECT"
+  iam_role_arn    = "USER_INPUT_3"
+  log_destination = "USER_INPUT_4"
+}
 resource "aws_vpc_endpoint" "ecr_api" {
   vpc_id            = aws_vpc._.id
   service_name      = "com.amazonaws.us-east-1.ssm"
