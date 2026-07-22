@@ -58,4 +58,5 @@ resource "aws_db_instance" "database" {
   auto_minor_version_upgrade = true
   iam_database_authentication_enabled = true
   deletion_protection = true
+  monitoring_interval = 60
 }
