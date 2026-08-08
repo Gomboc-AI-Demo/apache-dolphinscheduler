@@ -33,6 +33,7 @@ resource "aws_security_group" "database_sg" {
   }
 }
 
+
 resource "aws_db_subnet_group" "database_subnet_group" {
   name       = "dolphinscheduler-database_subnet_group"
   subnet_ids = [for subnet in aws_subnet.private : subnet.id]
